@@ -1,10 +1,14 @@
 import typer
 
-GREETING = typer.style("Hello", fg=typer.colors.GREEN, bold=True)
-FORMAL_GREETING = typer.style("Good day Mr/Ms", bg=typer.colors.BRIGHT_RED)
+GREETING = "Hello"
+FORMAL_GREETING = "Good day Mr/Ms"
+
+GREETING_STYLE = dict(fg=typer.colors.GREEN, bold=True)
+FORMAL_GREETING_STYLE = dict(bg=typer.colors.RED)
+STDERR_STYLE = dict(fg=typer.colors.RED)
 
 
-def _main(name: str, last_name: str = "", formal: bool = False):
+def _main(name: str, last_name: str = "", formal: bool = False, use_stderr: bool = False):
     """
     Say hi to NAME, optionally with a --last-name.
 
@@ -12,9 +16,17 @@ def _main(name: str, last_name: str = "", formal: bool = False):
     """
 
     greeting = GREETING if not formal else FORMAL_GREETING
+
+    if not use_stderr:
+        greeting_style = GREETING_STYLE if not formal else FORMAL_GREETING_STYLE
+        greeting = typer.style(greeting, **greeting_style)
+
     full_name = f"{name} {last_name}".strip()
 
-    typer.echo(f"{greeting} {full_name}!")
+    full_greeting = f"{greeting} {full_name}!"
+    full_greeting_style = STDERR_STYLE if use_stderr else {}
+
+    typer.secho(full_greeting, err=use_stderr, **full_greeting_style)
 
 
 def main():
