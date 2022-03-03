@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "typer-intro"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.scripts]
+typer-intro = "typer_intro.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.4.0"
+click = "^8.0.4"
+colorama = "^0.4.4"
+shellingham = "^1.4.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+flake8 = "^4.0.1"
+rope = "^0.23.0"
+
+[tool.black]
+skip-string-normalization = true
+line-length = 100
+target-version = ['py39']
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
