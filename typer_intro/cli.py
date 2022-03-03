@@ -1,5 +1,9 @@
-def main():
-  print("Ok")
+import typer
 
-if __name__ == '__main__':
-  main()
+
+def _main():
+    typer.echo("Hello World!")
+
+
+def main():
+    typer.run(_main)
