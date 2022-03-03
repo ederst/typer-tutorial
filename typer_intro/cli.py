@@ -1,8 +1,8 @@
 import typer
 
 
-def _main(name: str):
-    typer.echo(f"Hello {name}!")
+def _main(name: str, last_name: str):
+    typer.echo(f"Hello {name} {last_name}!")
 
 
 def main():
