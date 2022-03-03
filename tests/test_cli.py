@@ -4,7 +4,7 @@ import typer
 from click.testing import Result
 from typer.testing import CliRunner
 
-from typer_intro.cli import (FORMAL_GREETING, FORMAL_GREETING_STYLE, GREETING, GREETING_STYLE, SILLY_MESSAGE,
+from typer_intro.cli import (DEFAULT_NAME, FORMAL_GREETING, FORMAL_GREETING_STYLE, GREETING, GREETING_STYLE, SILLY_MESSAGE,
                              SILLY_NAMES, STDERR_STYLE, _main)
 
 # Test data
@@ -15,6 +15,7 @@ FULL_NAME = f"{FIRST_NAME} {LAST_NAME}"
 STYLED_GREETING = typer.style(GREETING, **GREETING_STYLE)
 STYLED_FORMAL_GREETING = typer.style(FORMAL_GREETING, **FORMAL_GREETING_STYLE)
 
+GREETING_WITH_DEFAULT_NAME = f"{STYLED_GREETING} {DEFAULT_NAME}!"
 GREETING_WITH_FULL_NAME = f"{STYLED_GREETING} {FULL_NAME}!"
 GREETING_WITH_FIRST_NAME = f"{STYLED_GREETING} {FIRST_NAME}!"
 FORMAL_GREETING_WITH_FULL_NAME = f"{STYLED_FORMAL_GREETING} {FULL_NAME}!"
@@ -32,10 +33,10 @@ def _invoke_app(args: List = None) -> Result:
     return runner.invoke(app, args, color=True)
 
 
-def test_fail_with_missing_argument_NAME():
+def test_print_default_greeting():
     result = _invoke_app()
-    assert result.exit_code == 2
-    assert "Error: Missing argument 'NAME'." in result.stderr
+    assert result.exit_code == 0
+    assert GREETING_WITH_DEFAULT_NAME in result.stdout
 
 
 def test_fail_with_no_such_option():
