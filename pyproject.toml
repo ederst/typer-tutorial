@@ -22,8 +22,11 @@ pytest = "^7.0.1"
 
 [tool.black]
 skip-string-normalization = true
-line-length = 100
+line-length = 120
 target-version = ['py39']
+
+[tool.flake8]
+max-line-length = 120
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
