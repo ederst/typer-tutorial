@@ -1,8 +1,10 @@
+from typing import Optional
 import typer
 
 SILLY_NAMES = ["Boaty McBoatface", "Dishy McFlatface"]
 SILLY_MESSAGE = "'{silly_full_name}' is a really silly name."
 
+DEFAULT_NAME = "World"
 GREETING = "Hello"
 FORMAL_GREETING = "Good day Mr/Ms"
 
@@ -12,7 +14,7 @@ STDERR_STYLE = dict(fg=typer.colors.RED)
 
 
 def _main(
-    name: str = typer.Argument(...),
+    name: Optional[str] = typer.Argument(None),
     last_name: str = "",
     formal: bool = False,
     use_stderr: bool = False,
@@ -25,7 +27,7 @@ def _main(
     """
 
     try:
-        full_name = f"{name} {last_name}".strip()
+        full_name = f"{name or DEFAULT_NAME} {last_name}".strip()
         if full_name in SILLY_NAMES:
             typer.echo(SILLY_MESSAGE.format(silly_full_name=full_name), err=True)
             raise typer.Exit(code=1)
