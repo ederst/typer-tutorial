@@ -12,7 +12,11 @@ STDERR_STYLE = dict(fg=typer.colors.RED)
 
 
 def _main(
-    name: str, last_name: str = "", formal: bool = False, use_stderr: bool = False, abort_on_errors: bool = False
+    name: str = typer.Argument(...),
+    last_name: str = "",
+    formal: bool = False,
+    use_stderr: bool = False,
+    abort_on_errors: bool = False,
 ):
     """
     Say hi to NAME, optionally with a --last-name.
