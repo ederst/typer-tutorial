@@ -23,7 +23,7 @@ runner = CliRunner()
 
 
 def _invoke_app(args: List = None) -> Result:
-    return runner.invoke(app, args)
+    return runner.invoke(app, args, color=True)
 
 
 def test_fail_with_missing_argument_NAME():

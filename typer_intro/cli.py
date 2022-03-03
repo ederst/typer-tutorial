@@ -1,7 +1,7 @@
 import typer
 
-GREETING = "Hello"
-FORMAL_GREETING = "Good day Mr/Ms"
+GREETING = typer.style("Hello", fg=typer.colors.GREEN, bold=True)
+FORMAL_GREETING = typer.style("Good day Mr/Ms", bg=typer.colors.BRIGHT_RED)
 
 
 def _main(name: str, last_name: str = "", formal: bool = False):
