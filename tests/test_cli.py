@@ -4,7 +4,7 @@ import typer
 from click.testing import Result
 from typer.testing import CliRunner
 
-from typer_intro.cli import (DEFAULT_NAME, FORMAL_GREETING, FORMAL_GREETING_STYLE, GREETING, GREETING_STYLE, SILLY_MESSAGE,
+from typer_tutorial.cli import (DEFAULT_NAME, FORMAL_GREETING, FORMAL_GREETING_STYLE, GREETING, GREETING_STYLE, SILLY_MESSAGE,
                              SILLY_NAMES, STDERR_STYLE, _main)
 
 # Test data
