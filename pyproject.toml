@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "typer-intro"
+name = "typer-tutorial"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.scripts]
-typer-intro = "typer_intro.cli:main"
+t11l = "typer_tutorial.cli:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
