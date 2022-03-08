@@ -19,7 +19,12 @@ def _get_random_default_name():
 
 
 def _main(
-    name: Optional[str] = typer.Argument(_get_random_default_name),
+    name: Optional[str] = typer.Argument(
+        _get_random_default_name,
+        help="The name of the user to greet",
+        show_default=f"One of: {', '.join(DEFAULT_NAMES)}",
+        metavar="some_name",
+    ),
     last_name: str = "",
     formal: bool = False,
     use_stderr: bool = False,
