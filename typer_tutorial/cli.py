@@ -14,7 +14,7 @@ STDERR_STYLE = dict(fg=typer.colors.RED)
 
 
 def _main(
-    name: Optional[str] = typer.Argument(None),
+    name: Optional[str] = typer.Argument(DEFAULT_NAME),
     last_name: str = "",
     formal: bool = False,
     use_stderr: bool = False,
@@ -27,7 +27,7 @@ def _main(
     """
 
     try:
-        full_name = f"{name or DEFAULT_NAME} {last_name}".strip()
+        full_name = f"{name} {last_name}".strip()
         if full_name in SILLY_NAMES:
             typer.echo(SILLY_MESSAGE.format(silly_full_name=full_name), err=True)
             raise typer.Exit(code=1)
