@@ -1,10 +1,11 @@
+import random
 from typing import Optional
 import typer
 
 SILLY_NAMES = ["Boaty McBoatface", "Dishy McFlatface"]
 SILLY_MESSAGE = "'{silly_full_name}' is a really silly name."
 
-DEFAULT_NAME = "World"
+DEFAULT_NAMES = ["World", "Wade", "Tilo", "Goostav"]
 GREETING = "Hello"
 FORMAL_GREETING = "Good day Mr/Ms"
 
@@ -13,8 +14,12 @@ FORMAL_GREETING_STYLE = dict(bg=typer.colors.RED)
 STDERR_STYLE = dict(fg=typer.colors.RED)
 
 
+def _get_random_default_name():
+    return random.choice(DEFAULT_NAMES)
+
+
 def _main(
-    name: Optional[str] = typer.Argument(DEFAULT_NAME),
+    name: Optional[str] = typer.Argument(_get_random_default_name),
     last_name: str = "",
     formal: bool = False,
     use_stderr: bool = False,
